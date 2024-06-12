@@ -23,8 +23,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('profile_text');
-            $table->dropColumn('profile_image');
+            if (Schema::hasColumn('users', 'profile_text')) {
+                $table->dropColumn('profile_text');
+                $table->dropColumn('profile_image');
+            }
         });
     }
+
 };

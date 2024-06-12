@@ -30,6 +30,8 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'profile_text'=> $this->faker->sentence(45),
             'profile_image'=> $this->faker->imageUrl($width = 640, $height = 480),
+            'follow' => $this->faker->randomNumber(),
+            'follower' => $this->faker->randomNumber(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

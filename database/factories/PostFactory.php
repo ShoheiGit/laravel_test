@@ -19,6 +19,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => $this->faker->numberBetween(1, 50),
             'title' => $this->faker->sentence(10),
             'content' => $this->faker->sentence(45),
             'image'=> $this->faker->imageUrl($width = 640, $height = 480),

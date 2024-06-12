@@ -8,18 +8,21 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $posts = Post::orderBy('updated_at', 'desc')->get();
         return view('dashboard',  compact(
             'posts',
         ));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('posts.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'title' => 'required',
             'content' => 'required',

@@ -7,8 +7,15 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/sass/app.scss'
             ],
             refresh: true,
         }),
     ],
+
+    server: {
+        hmr: {
+            host: 'localhost'
+        }
+    }
 });

@@ -1,0 +1,72 @@
+*{
+    width: 100%;
+}
+
+main{
+    width: 60%;
+    margin: 0 auto; 
+    margin-top: 4%;
+}
+
+.post{
+    border-bottom: solid 1px #000;
+    /* width: 60%;
+    margin: 0 auto; */
+    margin-bottom: 4%;
+}
+
+.profile{
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile_image{
+    width: 40%;
+
+    img{
+        height: 10vh;
+        width: 10vw;
+        border-radius: 50%;
+    }
+}
+
+
+.profile_name{
+    width: 60%;
+}
+
+.content{
+    display: flex;
+}
+
+.text h4{
+    margin-bottom: 4%;
+}
+
+
+/* mypage画面 */
+.myProfile{
+    margin-bottom: 4%;
+
+    .myprofile_top{
+        display: flex;
+        align-items: center;
+    
+        .myprofile_image{
+            width: 40%;
+        }   
+    
+        .follow{
+            width: 60%; 
+            display: flex;
+        }
+    }
+}
+
+
+
+
+
+
+
+

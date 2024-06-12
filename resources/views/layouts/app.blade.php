@@ -19,7 +19,7 @@
          <!-- jQuery読み込み -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- スクリプトの読み込み -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/sass/app.scss'])
         <script src="{{ asset('/js/main.js') }}"></script>
     </head>
     <body class="font-sans antialiased">
