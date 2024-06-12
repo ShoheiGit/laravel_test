@@ -8,5 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable =['title', 'content', 'images', 'updated_at'];
+    //テーブル名指定
+    protected $table = 'posts';
+
+    protected $guarded = [
+        'id',
+        'title',
+        'content',
+        'image',
+        'updated_at',
+    ];
 }

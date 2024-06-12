@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <!-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -13,5 +13,39 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+    <!-- sidebar -->
+    @section('sidebar')
+    @include('components.sidebar')
+    @stop  
+
+    <section class="posts">
+        @foreach ($post_infos as $post_info)
+        <div class="row post" v-for="tweet in tweets" :key="tweet.id">
+            <div class="profile">
+                <div class="profile_image">
+                    <img src="{{ $post_info->profile_image }}" alt="">
+                </div>
+                <div class="profile_name">
+                    <p>{{ $post_info->name }}</p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="image">
+                    <img class="img-fluid" style="max-width:50%;" src="{{ $post_info->image }}" alt="">
+                </div>
+                <div class="text">
+                    <h4>{{ Str::limit($post_info->title, 50, '(...)' ) }}</h4>
+                    <p>{{ Str::limit($post_info->content, 100, '(...)' ) }}</p>
+                </div>
+                <!-- <div class="update_date">
+                    {{$post_info->updated_at}}
+                </div> -->
+            </div>
+        </div>
+        @endforeach
+        <infinite-loading @infinite="fetchTweets"></infinite-loading>
+    </section>
+
 </x-app-layout>
