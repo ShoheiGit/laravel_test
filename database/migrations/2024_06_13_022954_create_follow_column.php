@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('profile_text')->comment('プロフィール文章')->after('email')->nullable();
-            $table->string('profile_image')->comment('プロフィール画像')->after('profile_text')->nullable();
+            $table->integer('follow')->comment('フォロー数')->after('profile_image')->default(0);
+            $table->integer('follower')->comment('フォロワー数')->after('follow')->default(0);
         });
     }
 
@@ -23,11 +23,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            if (Schema::hasColumn('users', 'profile_text')) {
-                $table->dropColumn('profile_text');
-                $table->dropColumn('profile_image');
+            if (Schema::hasColumn('users', 'follow', 'follower')) {
+                $table->dropColumn('follow');
+                $table->dropColumn('follower');
             }
         });
     }
-
 };

@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
             'profile_text'=> $this->faker->sentence(45),
-            'profile_image'=> $this->faker->imageUrl($width = 640, $height = 480),
+            'profile_image' => asset('images/user_icon.png'),
             'password'=>  static::$password ??= Hash::make('password'),
         ];
     }

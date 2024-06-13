@@ -24,8 +24,8 @@ class MypageController extends Controller
                         'users.follow',
                         'users.follower'
                     )
-                    // ->where('users.id', $id)
-                    ->where('users.id', 40)
+                    ->where('users.id', $id)
+                    // ->where('users.id', 11)
                     ->first();
 
         // 記事情報を取得
@@ -37,8 +37,8 @@ class MypageController extends Controller
                         'posts.image',
                         'posts.updated_at'
                     )
-                    // ->where('posts.user_id', $id)
-                    ->where('posts.user_id', 40)
+                    ->where('posts.user_id', $id)
+                    // ->where('posts.user_id', 11)
                     ->get();
                     
         return view('mypage', compact('user', 'posts'));
