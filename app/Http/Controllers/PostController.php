@@ -10,35 +10,31 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('updated_at', 'desc')->get();
-        return view('dashboard',  compact(
-            'posts',
-        ));
+        return view('create');
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('posts.create');
+        // $dir = 'img';
+
+        // $request->file('thumbnail')->store('public/' . $dir);
+
+        return view('dashbord');
     }
+
 
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png.jpg,gif,svg|max:2048',
         ]);
 
-        $post  = new Post;
+        $post = new Post;
 
         $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images'), $file_name);
-
-        $post->title = $request->title;
-        $post->content = $request->content;
-        $post->image = $file_name;
-
-        $post->save();
-        return redirect()->route('posts.index')->with('success', 'Post!');
     }
+
+
 }

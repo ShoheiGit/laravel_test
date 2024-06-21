@@ -14,7 +14,6 @@ class DashboardController extends Controller
         // PostとUserのデータを取得
         // $posts = Post::orderBy('updated_at', 'desc')->get();
         // $users = User::all();
-
         $post_infos = DB::table('posts')
                         ->leftJoin('users', 'users.id', '=' , 'posts.id')
                         ->select(
@@ -27,7 +26,7 @@ class DashboardController extends Controller
                         )
                         ->paginate(10);
                         // ->get();
-        // dd($post_infos); 
+        // dd($post_infos);
 
         // データをビューに渡す
         return view('dashboard', compact('post_infos'));

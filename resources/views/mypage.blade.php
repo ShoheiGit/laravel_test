@@ -14,6 +14,8 @@
     <section class="mypage">
         @if ($user)
             <div class="myProfile">
+            <div class="setting_link">
+            </div>
                 <div class="myprofile_top">
                     <div class="myprofile_image">
                         <img src="{{ $user->profile_image }}" alt="Profile Image">
@@ -26,6 +28,9 @@
                 <div class="myprofile_bottom">
                     <h1>{{ $user->name }}</h1>
                     <p>{{ $user->profile_text }}</p>
+                    <x-guest-layout>
+                        @livewire('profile-modal')
+                    </x-guest-layout>
                 </div>
             </div>
         @endif

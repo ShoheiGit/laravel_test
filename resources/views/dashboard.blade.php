@@ -8,7 +8,12 @@
     <!-- sidebar -->
     @section('sidebar')
     @include('components.sidebar')
-    @stop  
+    @stop
+
+    <!-- post button -->
+    <div class="post-button">
+        <button onclick="location.href='{{ route('post.index') }}'" type="button" class="btn btn-primary">投稿する</button>
+    </div>
 
     <section class="posts">
         @foreach ($post_infos as $post_info)
@@ -28,14 +33,18 @@
                 <div class="text">
                     <h4>{{ Str::limit($post_info->title, 50, '(...)' ) }}</h4>
                     <p>{{ Str::limit($post_info->content, 100, '(...)' ) }}</p>
+                    <div class="update_date">
+                        {{$post_info->updated_at}}
+                    </div>
                 </div>
-                <!-- <div class="update_date">
-                    {{$post_info->updated_at}}
-                </div> -->
             </div>
         </div>
         @endforeach
         <infinite-loading @infinite="fetchTweets"></infinite-loading>
     </section>
+
+
+
+
 
 </x-app-layout>
