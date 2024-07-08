@@ -9,11 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class MypageController extends Controller
 {
-    public function index()
+    public function index($e)
     {
-        //ログイン中のユーザーID
-        $id = Auth::id(); 
-        
         // ユーザー情報を取得
         $user = DB::table('users')
                     ->select(
@@ -24,23 +21,23 @@ class MypageController extends Controller
                         'users.follow',
                         'users.follower'
                     )
-                    ->where('users.id', $id)
-                    // ->where('users.id', 11)
+                    ->where('users.id', $e)
                     ->first();
 
         // 記事情報を取得
         $posts = DB::table('posts')
+                    ->orderBy('updated_at', 'desc')
                     ->select(
+                        'posts.id',
                         'posts.user_id',
                         'posts.title',
                         'posts.content',
                         'posts.image',
                         'posts.updated_at'
                     )
-                    ->where('posts.user_id', $id)
-                    // ->where('posts.user_id', 11)
+                    ->where('posts.user_id', $e)
                     ->get();
-                    
+
         return view('mypage', compact('user', 'posts'));
     }
 }

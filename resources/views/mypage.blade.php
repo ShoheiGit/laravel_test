@@ -9,7 +9,7 @@
     <!-- sidebar -->
     @section('sidebar')
     @include('components.sidebar')
-    @stop  
+    @stop
 
     <section class="mypage">
         @if ($user)
@@ -18,7 +18,7 @@
             </div>
                 <div class="myprofile_top">
                     <div class="myprofile_image">
-                        <img src="{{ $user->profile_image }}" alt="Profile Image">
+                        <img src="{{ asset($user->profile_image) }}" alt="Profile Image">
                     </div>
                     <div class="follow">
                         <p>フォロー: {{ $user->follow }}</p>
@@ -29,7 +29,9 @@
                     <h1>{{ $user->name }}</h1>
                     <p>{{ $user->profile_text }}</p>
                     <x-guest-layout>
-                        @livewire('profile-modal')
+                        @if (Auth::id() === $user->id )
+                            @livewire('profile-modal')
+                        @endif
                     </x-guest-layout>
                 </div>
             </div>
@@ -39,16 +41,20 @@
             <div class="myPosts">
                 @foreach ($posts as $post)
                     <div>
+                        @if (Auth::id() === $post->user_id)
+                            <a href="{{ route('post.edit', $post->id) }}">
+                        @endif
                         <h2>{{ $post->title }}</h2>
                         <p>{{ $post->content }}</p>
-                        <img src="{{ $post->image }}" alt="Post Image">
+                        <img src="{{ asset($post->image) }}" alt="Post Image">
                         <p>更新日: {{ $post->updated_at }}</p>
+                        </a>
                     </div>
                 @endforeach
             </div>
         @endif
 
     </section>
-    
+
 
 </x-app-layout>

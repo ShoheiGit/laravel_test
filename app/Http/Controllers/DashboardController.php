@@ -12,22 +12,20 @@ class DashboardController extends Controller
     public function index()
     {
         // PostとUserのデータを取得
-        // $posts = Post::orderBy('updated_at', 'desc')->get();
-        // $users = User::all();
         $post_infos = DB::table('posts')
-                        ->leftJoin('users', 'users.id', '=' , 'posts.id')
+                        ->orderBy('updated_at', 'desc')
+                        ->leftJoin('users', 'users.id', '=' , 'posts.user_id')
                         ->select(
                             'users.name',
                             'users.profile_image',
+                            'posts.user_id',
+                            'posts.id',
                             'posts.title',
                             'posts.content',
                             'posts.image',
                             'posts.updated_at',
                         )
                         ->paginate(10);
-                        // ->get();
-        // dd($post_infos);
-
         // データをビューに渡す
         return view('dashboard', compact('post_infos'));
     }
