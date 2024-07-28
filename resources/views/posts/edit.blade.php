@@ -5,10 +5,6 @@
         </h2>
     </x-slot>
 
-    <!-- sidebar -->
-    @section('sidebar')
-    @include('components.sidebar')
-    @stop
 
     <div class="post-detail">
         @if ($errors->any())
