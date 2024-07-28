@@ -6,10 +6,6 @@
     </x-slot>
 
 
-    <!-- sidebar -->
-    @section('sidebar')
-    @include('components.sidebar')
-    @stop
 
     <section class="mypage">
         @if ($user)

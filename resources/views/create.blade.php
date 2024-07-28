@@ -5,12 +5,6 @@
         </h2>
     </x-slot>
 
-    <!-- sidebar -->
-    @section('sidebar')
-    @include('components.sidebar')
-    @stop
-
-
     <section class="create_post">
         {{-- バリデーションエラーメッセージ --}}
         <x-error \>
