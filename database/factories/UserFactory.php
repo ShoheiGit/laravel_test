@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'profile_text'=> $this->faker->sentence(45),
-            'profile_image' => asset('images/user_icon.png'),
+            'profile_image' => 'images/user_icon.png',
             'follow' => $this->faker->randomNumber(),
             'follower' => $this->faker->randomNumber(),
             'password' => static::$password ??= Hash::make('password'),

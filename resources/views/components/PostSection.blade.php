@@ -6,7 +6,7 @@
         <div class="profile">
             <div class="profile_image">
                 <a href="{{ route('mypage.index', ['user_id' => $post_info->user_id]) }}">
-                    <img src="{{ $post_info->profile_image }}" alt="">
+                    <img src="{{ asset($post_info->profile_image) }}" alt="">
                 </a>
             </div>
             <div class="profile_name">
