@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="postsection m-4">
+    <div class="postsection  m-4">
         <!-- post button -->
         <div class="post-button">
             <button onclick="location.href='{{ route('post.index') }}'" type="button" class="btn btn-primary">投稿する</button>

@@ -29,6 +29,7 @@
             <main class="flex">
                 @include('components.sidebar')
                 {{ $slot }}
+                @include('layouts.aside')
             </main>
         </div>
         
