@@ -6,16 +6,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileModalController;
+use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\ChannelUserController;
+use App\Http\Controllers\SidebarController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware(['auth', 'verified'])->group(function () {
-    // DashboardControllerのindexメソッドを/dashboardにマップ
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
@@ -36,6 +35,21 @@ Route::middleware('auth')->group(function () {
         'update'  => 'post.update',
         'destroy' => 'post.destroy',
     ]);
+
+    //チャンネル
+    Route::resource('/channel', ChannelController::class)->names([
+        'index'    => 'channel.index',
+        'create'   => 'channel.create',
+        'store'    => 'channel.store',
+        'show'     => 'channel.show',
+    ]);
+
+    //チャンネルユーザー
+    Route::resource('/channel_user', ChannelUserController::class)->names([
+        'store' => 'channelUser.store',
+    ]);
+
+    
 });
 
 require __DIR__.'/auth.php';

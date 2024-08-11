@@ -26,33 +26,19 @@
             </a>
         </li>
     </ul>
-    <h4>channel</h4>
+    <h4><a href="{{ route('channel.index') }}">channel</a></h4>
     <ul>
+    @foreach ($channel_infos as $item) // ここで$channel_infosを使用
         <li class="flex text-lg">
-            <a href="{{ route('dashboard') }}"  class="flex  items-center text-lg whitespace-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill  w-10" viewBox="0 0 16 16">
-            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-            </svg>
-                channel1
+            <a href="{{ route('dashboard') }}" class="flex items-center text-lg whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill w-10" viewBox="0 0 16 16">
+                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                </svg>
+                {{ $item->channel_name }}
             </a>
         </li>
-        <li class="flex text-lg">
-            <a href="{{ route('mypage.index', ['user_id' => Auth::id() ]) }}". class="flex items-center text-lg whitespace-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill  w-10" viewBox="0 0 16 16">
-            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-            </svg>
-            channel2
-            </a>
-        </li>
-        <li class="text-lg">
-            <a href="{{ route('profile.edit') }}"  class="flex items-center text-lg whitespace-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill  w-10" viewBox="0 0 16 16">
-            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-            </svg>
-            channel3
-            </a>
-        </li>
-    </ul>
+    @endforeach
+</ul>
     <h4>favorite</h4>
     <ul>
         <li class="flex text-lg">

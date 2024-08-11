@@ -27,7 +27,7 @@
             
             <!-- Page Content -->
             <main class="flex">
-                @include('components.sidebar')
+                @include('components.sidebar', ['channel_infos' => $channel_infos]) // sidebarに$channel_infosを渡す
                 {{ $slot }}
                 @include('layouts.aside')
             </main>
