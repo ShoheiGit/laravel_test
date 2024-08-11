@@ -16,7 +16,7 @@
         <div class="content">
             <a href="{{ route('post.show', $post_info->id ) }}" class="flex no-underline">
                 <div class="image w-60">
-                    <img class="img-fluid"  src="{{ $post_info->image }}" alt="">
+                    <img class="img-fluid"  src="{{ asset($post_info->image) }}" alt="">
                 </div>
                 <div class="text m-4  text-black ">
                     <h4>{{ Str::limit($post_info->title, 50, '(...)' ) }}</h4>

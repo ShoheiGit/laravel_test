@@ -7,14 +7,14 @@
 
 
 
-    <section class="mypage">
+    <section class="mypage  m-4">
         @if ($user)
             <div class="myProfile">
             <div class="setting_link">
             </div>
                 <div class="myprofile_top">
                     <div class="myprofile_image">
-                        <img src="{{ asset($user->profile_image) }}" alt="Profile Image">
+                        <img class="w-1/2" src="{{ asset($user->profile_image) }}" alt="Profile Image">
                     </div>
                     <div class="follow">
                         <p>フォロー: {{ $user->follow }}</p>
@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="myprofile_bottom">
-                    <h1>{{ $user->name }}</h1>
-                    <p>{{ $user->profile_text }}</p>
+                    <h1 class="text-4xl">{{ $user->name }}</h1>
+                    <p class="my-3 text-lg">{{ $user->profile_text }}</p>
                     <x-guest-layout>
                         @if (Auth::id() === $user->id )
                             @livewire('profile-modal')
@@ -35,16 +35,24 @@
 
         @if ($posts)
             <div class="myPosts">
-                @foreach ($posts as $post)
-                    <div>
-                        @if (Auth::id() === $post->user_id)
-                            <a href="{{ route('post.edit', $post->id) }}">
-                        @endif
-                        <h2>{{ $post->title }}</h2>
-                        <p>{{ $post->content }}</p>
-                        <img src="{{ asset($post->image) }}" alt="Post Image">
-                        <p>更新日: {{ $post->updated_at }}</p>
-                        </a>
+                @foreach ($posts as $post_info)
+                    <div class="post sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" v-for="tweet in tweets" :key="tweet.id">
+                        <div class="content">
+                            @if (Auth::id() === $post_info->user_id)
+                                <a href="{{ route('post.show', $post_info->id ) }}" class="flex no-underline">
+                            @endif
+                                <div class="image w-60">
+                                    <img class="img-fluid"  src="{{ asset($post_info->image) }}" alt="">
+                                </div>
+                                <div class="text m-4  text-black ">
+                                    <h4>{{ Str::limit($post_info->title, 50, '(...)' ) }}</h4>
+                                    <p>{{ Str::limit($post_info->content, 100, '(...)' ) }}</p>
+                                    <div class="update_date">
+                                        {{$post_info->updated_at}}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>
