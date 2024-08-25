@@ -30,19 +30,12 @@ class DashboardController extends Controller
                         )
                         ->paginate(10);
         
-        $channel_infos = DB::table('channel_users') 
-                        ->leftJoin('channels', 'channels.id', '=', 'channel_users.channel_id') 
-                        ->select(
-                            'channel_users.user_id', 
-                            'channel_users.channel_id', 
-                            'channels.channel_name',
-                        )
-                        ->where('channel_users.user_id', Auth::id()) 
-                        ->get();
+              
 
         return view('dashboard', compact(
             'post_infos',
-            'channel_infos',
         ));
+
+        
     }
 }

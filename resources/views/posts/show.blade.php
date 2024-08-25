@@ -6,18 +6,18 @@
     </x-slot>
 
 
-    <div class="post-detail">
-        <div class="profile">
-            <div class="profile_image">
-                <img src="{{ asset($user->profile_image) }}" alt="">
+    <div class="post-detail mx-40">
+        <div class="profile my-3">
+            <div class="profile_image w-1/3">
+                <img class="rounded-full w-24 h-24 object-cover" src="{{ asset($user->profile_image) }}" alt="">
             </div>
             <div class="profile_name">
-                <p>{{ $post->name }}</p>
+                <p>{{ $user->name }}</p>
             </div>
         </div>
-        <div class="content">
-            <div class="image">
-                <img class="img-fluid" style="max-width:50%;" src="{{ asset($post->image) }}" alt="">
+        <div class="content flex-col">
+            <div class="image mb-5">
+                <img class="img-fluid mx-auto w-4/6" src="{{ asset($post->image) }}" alt="">
             </div>
             <div class="text">
                 <h4>{{ $post->title }}</h4>

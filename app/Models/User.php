@@ -58,4 +58,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //フォロー・フォロー解除
+    public function channels()
+    {
+        return $this->belongsToMany(Channel::class, 'channel_users', 'user_id', 'channel_id');
+    }
+
+    public function isFollowing($channel)
+    {
+        return $this->channels()->where('channel_id', $channel->id)->exists();
+    }
 }

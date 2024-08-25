@@ -42,12 +42,14 @@ Route::middleware('auth')->group(function () {
         'create'   => 'channel.create',
         'store'    => 'channel.store',
         'show'     => 'channel.show',
+        '{$channel_id}/edit'     => 'channel.edit',
     ]);
 
     //チャンネルユーザー
     Route::resource('/channel_user', ChannelUserController::class)->names([
         'store' => 'channelUser.store',
     ]);
+
 
     
 });

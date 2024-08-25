@@ -14,7 +14,7 @@
             </div>
                 <div class="myprofile_top">
                     <div class="myprofile_image">
-                        <img class="w-1/2" src="{{ asset($user->profile_image) }}" alt="Profile Image">
+                        <img class="w-1/2 rounded-full w-24 h-24 object-cover" src="{{ asset($user->profile_image) }}" alt="Profile Image">
                     </div>
                     <div class="follow">
                         <p>フォロー: {{ $user->follow }}</p>

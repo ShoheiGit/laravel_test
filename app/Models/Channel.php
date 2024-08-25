@@ -21,4 +21,6 @@ class Channel extends Model
     protected $guarded = [
         'id',
     ];
+
+    
 }

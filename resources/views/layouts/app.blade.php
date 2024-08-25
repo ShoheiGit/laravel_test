@@ -9,7 +9,6 @@
         @stack('styles')
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/sidebar.css') }}">
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <!-- Scripts -->
@@ -24,10 +23,9 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
-            
             <!-- Page Content -->
             <main class="flex">
-                @include('components.sidebar', ['channel_infos' => $channel_infos]) // sidebarに$channel_infosを渡す
+                @include('components.sidebar')
                 {{ $slot }}
                 @include('layouts.aside')
             </main>

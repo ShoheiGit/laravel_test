@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse; 
 use Illuminate\Support\Facades\DB;
 use App\models\Channel;
+use App\models\Post;
 
 class ChannelController extends Controller
 {
     public function index()
     {
         $channels = DB::table('channels')->get();
+
 
         return view('channel', compact('channels'));
     }
@@ -45,7 +47,22 @@ class ChannelController extends Controller
     public function show($id)
     {
         $channel = Channel::findOrFail($id);
+        $posts = Post::select(
+                    'id',
+                    'user_id',
+                    'channel_id',
+                    'title',
+                    'content',
+                    'image',
+                    'created_at',
+                    )
+                ->where('channel_id', $id)
+                ->get();
 
-        return view('channel.show', compact('channel'));
+        return view('channel.show', compact('channel', 'posts'));
+    }
+
+    public function edit() {
+        return view('channel.edit');
     }
 }

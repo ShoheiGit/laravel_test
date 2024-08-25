@@ -26,45 +26,32 @@
             </a>
         </li>
     </ul>
-    <h4><a href="{{ route('channel.index') }}">channel</a></h4>
+    <h4><a href="{{ route('channel.index') }}" class="text-black no-underline hover:underline">channel</a></h4>
     <ul>
-    @foreach ($channel_infos as $item) // ここで$channel_infosを使用
-        <li class="flex text-lg">
-            <a href="{{ route('dashboard') }}" class="flex items-center text-lg whitespace-nowrap">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill w-10" viewBox="0 0 16 16">
-                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                </svg>
-                {{ $item->channel_name }}
-            </a>
-        </li>
-    @endforeach
-</ul>
+        <li class="pl-2">Myチャンネル</li>
+        @foreach($channel_infos as $channel_info)
+            <li class="flex text-lg">
+                <a href="{{ route('channel.show', ['channel' => $channel_info->channel_id]) }}" class="flex items-center text-lg whitespace-nowrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill w-10" viewBox="0 0 16 16">
+                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                    {{ $channel_info->channel_name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
     <h4>favorite</h4>
     <ul>
+        @foreach ($favorite_infos as $favorite_info)
         <li class="flex text-lg">
             <a href="{{ route('dashboard') }}"  class="flex  items-center text-lg whitespace-nowrap">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill  w-10" viewBox="0 0 16 16">
             <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
             </svg>
-                post
+                {{ $favorite_info->title }}
             </a>
         </li>
-        <li class="flex text-lg">
-            <a href="{{ route('mypage.index', ['user_id' => Auth::id() ]) }}". class="flex items-center text-lg whitespace-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill  w-10" viewBox="0 0 16 16">
-            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-            </svg>
-            post
-            </a>
-        </li>
-        <li class="text-lg">
-            <a href="{{ route('profile.edit') }}"  class="flex items-center text-lg whitespace-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill  w-10" viewBox="0 0 16 16">
-            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-            </svg>
-            post
-            </a>
-        </li>
+        @endforeach
     </ul>
 
 </div>
