@@ -24,11 +24,7 @@
                 <div class="myprofile_bottom">
                     <h1 class="text-4xl">{{ $user->name }}</h1>
                     <p class="my-3 text-lg">{{ $user->profile_text }}</p>
-                    <x-guest-layout>
-                        @if (Auth::id() === $user->id )
-                            @livewire('profile-modal')
-                        @endif
-                    </x-guest-layout>
+                    
                 </div>
             </div>
         @endif
@@ -42,7 +38,7 @@
                                 <a href="{{ route('post.show', $post_info->id ) }}" class="flex no-underline">
                             @endif
                                 <div class="image w-60">
-                                    <img class="img-fluid"  src="{{ asset($post_info->image) }}" alt="">
+                                    <img class="object-cover" style="width: 180px; height: 120px;" src="{{ asset($post_info->image) }}" alt="" >
                                 </div>
                                 <div class="text m-4  text-black ">
                                     <h4>{{ Str::limit($post_info->title, 50, '(...)' ) }}</h4>

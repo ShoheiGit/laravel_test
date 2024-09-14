@@ -36,20 +36,9 @@ class AppServiceProvider extends ServiceProvider
                         ->where('channel_users.user_id', $userId) 
                         ->get();  
 
-                $favorite_infos = DB::table('favorites')
-                        ->leftJoin('posts', 'favorites.user_id', '=', 'posts.user_id')
-                        ->select(
-                            'posts.user_id',
-                            'posts.id',
-                            'posts.title',
-                        )
-                        ->where('posts.user_id', $userId)
-                        ->get();
                             
-
                 $view->with(compact(
                     'channel_infos',
-                    'favorite_infos'
                 ));
             }
         });

@@ -30,7 +30,10 @@ class DashboardController extends Controller
                         )
                         ->paginate(10);
         
-              
+        // 取得後にフォーマットを適用
+        foreach ($post_infos as $post_info) {
+            $post_info->updated_at = \Carbon\Carbon::parse($post_info->updated_at)->format('Y-m-d');
+        }
 
         return view('dashboard', compact(
             'post_infos',

@@ -23,13 +23,8 @@
                     <label for="title" class="pt-3">{{ __('タイトル') }}</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}">
 
-                    <label for="description" class="pt-3">{{ __('コンテンツ') }}</label>
-                    <select name="changeFont" id="changeFont">
-                        <option value="40px">大</option>
-                        <option value="21px">中</option>
-                        <option value="14px">小</option>
-                    </select>
-                    <textarea class="form-control" name="description" id="description">{{ old('description') }}</textarea>
+                    <label for="description" class="pt-3">{{ __('本分') }}</label>
+                    <textarea class="form-control" name="description" id="description" rows="20">{{ old('description') }}</textarea>
                 <div class="d-flex justify-content-between pt-3">
 
                 <button type="submit" class="btn btn-success">

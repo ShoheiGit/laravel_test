@@ -7,17 +7,13 @@
 
 
     <div class="post-detail mx-40">
-        <div class="profile my-3">
-            <div class="profile_image w-1/3">
-                <img class="rounded-full w-24 h-24 object-cover" src="{{ asset($user->profile_image) }}" alt="">
-            </div>
-            <div class="profile_name">
-                <p>{{ $user->name }}</p>
-            </div>
+        <div class="my-3">
+            <img class="rounded-full object-cover" style="width:100px; height:100px;" src="{{ asset($user->profile_image) }}" alt="">
+            <p class="text-xl">{{ $user->name }}</p>
         </div>
         <div class="content flex-col">
             <div class="image mb-5">
-                <img class="img-fluid mx-auto w-4/6" src="{{ asset($post->image) }}" alt="">
+                <img class="object-cover mx-auto w-4/6" style="max-height:300px" src="{{ asset($post->image) }}" alt="">
             </div>
             <div class="text">
                 <h4>{{ $post->title }}</h4>
