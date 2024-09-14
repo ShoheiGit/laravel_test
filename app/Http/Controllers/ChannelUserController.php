@@ -8,19 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ChannelUserController extends Controller
 {
-    public function store(Request $request)
+        public function store(Request $request)
     {
-        $existingUser = ChannelUser::where('user_id', Auth::id())->where('channel_id', $request->id)->first();
-        
-        if ($existingUser) {
-            return back()->with('message', 'すでにフォローしてます');
-        }
+        $user = Auth::user();
+        $channelId = $request->input('id');
 
-        $channelUser             = new ChannelUser;
-        $channelUser->user_id    = Auth::id();
-        $channelUser->channel_id = $request->id;
-        $channelUser->save();
-        
-        return back()->with('message', 'フォローしました');
+        if ($user->channels()->where('channel_id', $channelId)->exists()) {
+            // フォロー解除
+            $user->channels()->detach($channelId);
+            return response()->json(['status' => 'unfollowed']);
+        } else {
+            // フォロー
+            $user->channels()->attach($channelId);
+            return response()->json(['status' => 'followed']);
+        }
     }
+
 }

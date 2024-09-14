@@ -54,7 +54,7 @@ class PostController extends Controller
     public function show(string $id): View
     {
         $post = Post::findOrFail($id);
-        $user = User::select('profile_image')
+        $user = User::select('profile_image', 'name')
                             ->findOrFail($post->user_id);
         return view('posts.show', compact('post', 'user'));
     }

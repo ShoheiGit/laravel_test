@@ -30,19 +30,15 @@ class DashboardController extends Controller
                         )
                         ->paginate(10);
         
-        $channel_infos = DB::table('channel_users') 
-                        ->leftJoin('channels', 'channels.id', '=', 'channel_users.channel_id') 
-                        ->select(
-                            'channel_users.user_id', 
-                            'channel_users.channel_id', 
-                            'channels.channel_name',
-                        )
-                        ->where('channel_users.user_id', Auth::id()) 
-                        ->get();
+        // 取得後にフォーマットを適用
+        foreach ($post_infos as $post_info) {
+            $post_info->updated_at = \Carbon\Carbon::parse($post_info->updated_at)->format('Y-m-d');
+        }
 
         return view('dashboard', compact(
             'post_infos',
-            'channel_infos',
         ));
+
+        
     }
 }

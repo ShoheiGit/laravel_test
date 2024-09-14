@@ -16,6 +16,6 @@ class Post extends Model
         'title',
         'content',
         'image',
-        'updated_at',
+        'updated_at' => 'datetime:Y-m-d',
     ];
 }
